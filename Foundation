@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RWA Maths Subject 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: Arial;
+  background: linear-gradient(135deg, #000428, #004e92);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px red;
+}
+
+h1 {
+  color: yellow;
+  font-size: 24px;
+}
+
+.button {
+  display: block;
+  margin: 15px auto;
+  padding: 15px;
+  background: red;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+  width: 90%;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: yellow;
+  color: black;
+}
+
+.footer {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #ccc;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+<h1>🔥 RWA RRB GROUP-D 2026 StfShiva</h1>
+<h2>📘 Maths Foundation Subject</h2>
+<p>👨‍🏫 Teacher: <b>Aakash Sir</b></p>
+
+<a class="button" href="https://spidyuniverserwa.vercel.app/course/356/subject/2164" target="_blank">
+👉 Open Maths Subject Course
+</a>
+
+<a class="button" href="http://t.me/Stfshiva" target="_blank">
+🌐 Open RWA Main Website
+</a>
+
+<p>📚 Topics: Ratio, Percentage, Profit Loss, Time Work, Speed Distance</p>
+
+<div class="footer">
+© 2026 RWA Maths Foundation | Railway Preparation
+</div>
+
+</div>
+
+</body>
+</html>
