@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ambey Computer Institute Aap</title>  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+    body{background:#0f172a;color:#fff}
+
+    header{background:#1e293b;padding:16px;text-align:center;font-size:20px;font-weight:bold}
+
+    .app{max-width:420px;margin:auto;min-height:100vh;display:flex;flex-direction:column}
+
+    .screen{flex:1;padding:20px;display:none}
+    .screen.active{display:block}
+
+    .card{background:#1e293b;padding:16px;border-radius:14px;margin-bottom:15px}
+
+    input,select{width:100%;padding:10px;margin:8px 0;border-radius:8px;border:none}
+
+    button{width:100%;padding:12px;margin-top:10px;border:none;border-radius:10px;background:#2563eb;color:#fff;font-size:15px}
+
+    .bottom-nav{display:flex;background:#1e293b}
+    .bottom-nav button{flex:1;background:none;border:none;color:#fff;padding:12px}
+    .bottom-nav button.active{background:#2563eb}
+  </style></head>
+<body><div class="app"><header> Ambey Computer Institute </header><!-- HOME --><div id="home" class="screen active">
+  <div class="card">
+    <h3>स्वागत है</h3>
+    <p>यह मोबाइल ऐप जैसा इंस्टिट्यूट मैनेजमेंट सिस्टम है।</p>
+  </div>
+</div><!-- ADMISSION --><div id="admission" class="screen">
+  <div class="card">
+    <h3>ऑनलाइन एडमिशन</h3>
+    <iframe src="https://docs.google.com/forms/d/e/EXAMPLE_FORM_ID/viewform?embedded=true" width="100%" height="400"></iframe>
+  </div>
+</div><!-- RESULT --><div id="result" class="screen">
+  <div class="card">
+    <h3>रिजल्ट चेक</h3>
+    <input id="roll" placeholder="रोल नंबर" />
+    <button onclick="checkResult()">रिजल्ट देखें</button>
+    <p id="msg"></p>
+  </div>
+</div><!-- FEES --><div id="fees" class="screen">
+  <div class="card">
+    <h3>फीस जमा</h3>
+    <input id="name" placeholder="नाम" />
+    <input id="amount" placeholder="राशि" />
+    <button onclick="saveFees()">सेव</button>
+    <p id="fmsg"></p>
+  </div>
+</div><!-- NAVIGATION --><div class="bottom-nav">
+  <button class="active" onclick="show('home',this)">Home</button>
+  <button onclick="show('admission',this)">Admission</button>
+  <button onclick="show('result',this)">Result</button>
+  <button onclick="show('fees',this)">Fees</button>
+</div></div><script>
+function show(id,btn){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function saveFees(){
+  if(!name.value||!amount.value){fmsg.innerText='जानकारी भरें';return}
+  localStorage.setItem('fees_'+name.value,amount.value);
+  fmsg.innerText='फीस सेव';
+}
+
+const API_URL="https://script.google.com/macros/s/EXAMPLE_SCRIPT_ID/exec";
+
+async function checkResult(){
+  if(!roll.value){msg.innerText='रोल नंबर डालें';return}
+  msg.innerText='लोड हो रहा...';
+  try{
+    const r=await fetch(API_URL+"?roll="+roll.value);
+    const d=await r.json();
+    if(d.status==='not_found'){msg.innerText='नहीं मिला';return}
+    msg.innerText=`${d.name} - ${d.result}`;
+  }catch{msg.innerText='एरर'}
+}
+</script></body>
+</html>
