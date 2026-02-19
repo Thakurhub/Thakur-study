@@ -1,0 +1,38 @@
+rwa-exams-pro/
+ ├── public/
+ ├── src/
+ │   ├── components/
+ │   │    Navbar.js
+ │   │    CourseCard.js
+ │   │    ProgressBar.js
+ │   │    Certificate.js
+ │   ├── pages/
+ │   │    Home.js
+ │   │    Login.js
+ │   │    Buy.js
+ │   │    MyCourses.js
+ │   │    AdminDashboard.js
+ │   ├── firebase.js
+ │   ├── App.js
+ │   └── index.js
+ └── package.jsonimport { doc, getDoc } from "firebase/firestore";
+import { db, auth } from "../firebase";
+
+export const checkAccess = async () => {
+  const ref = doc(db, "purchases", auth.currentUser.uid);
+  const snap = await getDoc(ref);
+  return snap.exists() && snap.data().unlocked;
+};export default function VideoPlayer({ unlocked }) {
+  if (!unlocked) return <h3>पहले कोर्स खरीदें 🔒</h3>;
+
+  return (
+    <iframe
+      width="100%"
+      height="300"
+      src="https://www.youtube.com/embed/VIDEO_ID"
+      title="Course Video"
+      allowFullScreen
+    />
+  );
+}export const calculateEarning = (students) =>
+  students.filter(s => s.paid).length * 199;
